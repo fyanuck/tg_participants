@@ -39,7 +39,7 @@ def get_participants(client, entity_id: str):
         participants = client(GetParticipantsRequest(
             entity, ChannelParticipantsSearch(''), offset=0, limit=200, hash=0))
         for person in participants.users:
-            print(f'id={person.id}, name={person.name}')
+            print(f'id={person.id}, username={person.username}, name={person.first_name} {person.last_name}')
     except Exception as e:
         print(f'Ошибка списка участников: {e}')
         exit(1)
@@ -51,3 +51,7 @@ def main():
     
     client = get_client()
     get_participants(client, entity_id)
+
+
+if __name__ == '__main__':
+    main()
